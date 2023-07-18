@@ -128,16 +128,15 @@ public class EgovSampleController {
 	public String addSample(@ModelAttribute("searchVO") SampleDefaultVO searchVO, SampleVO sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
 			throws Exception {
 
-		// Server-Side Validation
-		beanValidator.validate(sampleVO, bindingResult);
-
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("sampleVO", sampleVO);
-			return "sample/egovSampleRegister";
-		}
-
-		sampleService.insertSample(sampleVO);
-		status.setComplete();
+		
+//		  Server-Side Validation 
+		  beanValidator.validate(sampleVO, bindingResult);
+		  
+		  if (bindingResult.hasErrors()) { model.addAttribute("sampleVO", sampleVO);
+		  return "sample/egovSampleRegister"; }
+		  
+		  sampleService.insertSample(sampleVO); status.setComplete();
+		 
 		return "forward:/egovSampleList.do";
 	}
 
